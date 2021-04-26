@@ -13,9 +13,9 @@ dubbo:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.186.128:3306/yuhb-test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
-    username: root
-    password: 123456
+    url: jdbc:mysql://192.168.0.246:3366/seata_account?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: root
+      password: root
 
   cloud:
     nacos:

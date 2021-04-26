@@ -24,8 +24,6 @@ import java.math.BigDecimal;
 public class OrderService {
 
     @Resource
-    private AccountFeignClient accountFeignClient;
-    @Resource
     private StorageFeignClient storageFeignClient;
     @Resource
     private OrderDAO orderDAO;
@@ -64,8 +62,6 @@ public class OrderService {
                 .setCount(count)
                 .setMoney(orderMoney);
         orderDAO.insert(order);
-
-        accountFeignClient.reduce(userId, orderMoney);
 
     }
 

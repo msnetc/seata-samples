@@ -23,8 +23,6 @@ public class OrderController {
 
     @Resource
     private OrderService orderService;
-    @Resource
-    private StorageFeignClient storageFeignClient;
 
 
     /**
