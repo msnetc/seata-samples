@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Service
 public class OrderService {
 
@@ -28,9 +31,10 @@ public class OrderService {
 
         // 定单总价 = 订购数量(count) * 商品单价(100)
         int orderMoney = count * 100;
+        LocalDateTime crt_time  = LocalDateTime.now();
         // 生成订单
-        jdbcTemplate.update("insert order_tbl(user_id,commodity_code,count,money) values(?,?,?,?)",
-            new Object[] {userId, commodityCode, count, orderMoney});
+        jdbcTemplate.update("insert order_tbl(user_id,commodity_code,count,money,crt_time) values(?,?,?,?,?)",
+            new Object[] {userId, commodityCode, count, orderMoney, crt_time});
         // 调用账户余额扣减
         String result = accountFeignClient.reduce(userId, orderMoney);
         if (!SUCCESS.equals(result)) {
